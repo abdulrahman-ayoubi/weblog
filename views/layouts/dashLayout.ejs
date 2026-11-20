@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="stylesheet" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/css/dashboard.css"/>
+    <link rel="stylesheet" href="/css/font-awesome.css"/>
+    <title>
+        <%= pageTitle %>
+    </title>
+    <link href="/css/dashboard.css" rel="stylesheet"/>
+    <% if(path === '/dashboard' ){ %>
+        <link href="/css/blog.css" rel="stylesheet"/>
+
+    <% } %>
+
+    <% if(path === '/dashboard' || path === '/dashboard/add-post' || path === '/dashboard/edit-post' || path === '/dashProfile' ){ %>
+
+        <link rel="stylesheet" href="/css/message.css">
+
+    <% } %>
+    <link rel="stylesheet" href="/css/styles.css"/>
+
+    <!--    <script src="//cdn.ckeditor.com/4.5.9/standard/ckeditor.js"></script>-->
+</head>
+
+<body class="rtl">
+<header>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow ">
+        <span class="navbar-brand col-md-3 col-lg-2 mr-0 px-3">Hi <%= fullName %></span>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
+                data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <form action="/dashboard/search" method="POST" class="d-flex align-items-center justify-content-between w-75">
+            <button class="fa fa-search" type="submit"></button>
+
+            <input class="form-control form-control-dark ml-5" type="text" placeholder="Search..."
+                   aria-label="Search" name="search"/>
+        </form>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="/users/logout">Log out</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="container-fluid">
+    <div class="row">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <aside>
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                    <div class="sidebar-sticky pt-3">
+                        <ul class="nav flex-column pb-2">
+                            <li class="nav-item ">
+                                <a class="nav-link d-flex align-items-center justify-content-sm-between btn"
+                                   href="/">Home
+                                    <span class="fa fa-home"></span></a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link d-flex align-items-center justify-content-sm-between btn
+                                    <%= path === '/dashProfile' ? "active btn-outline-secondary" : "" %>"
+                                   href="/dashboard/user-profile/<%= user %>">Profile
+                                    <span class="fa fa-photo"></span></a>
+                            </li>
+
+                            <li class="nav-item ">
+                                <a class="nav-link d-flex align-items-center justify-content-sm-between btn
+                                <%= path === '/dashboard' ? 'active btn-outline-secondary' : '' %>"
+                                   href="/dashboard">Dashboard
+                                    <span class="fa fa-dashboard"></span></a>
+                            </li>
+                            <li class="nav-item" id="app-post">
+                                <a class="nav-link d-flex align-items-center justify-content-sm-between btn
+                                <%= path === '/dashboard/add-post' ? 'active btn-outline-secondary' : '' %>"
+                                   href="/dashboard/add-post">add new post
+                                    <span class="fa fa-plus"></span></a>
+                            </li>
+                            <li class="nav-item" id="app-post">
+                                <a class="nav-link d-flex align-items-center justify-content-sm-between btn
+                                <%= path === '/setting' ? 'active btn-outline-secondary' : '' %>"
+                                   href="/dashboard/setting/<%= user %>">Setting
+                                    <span class="fa fa-server"></span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </aside>
+            <%- body %>
+        </main>
+    </div>
+</div>
+
+<script src="/js/jquery.slim.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<% if (path === '/dashboard'){ %>
+    <script src="/js/blog.js"></script>
+<% } %>
+<% if (path === '/dashProfile'){ %>
+    <script src="/js/register.js"></script>
+<% } %>
+<% if(path === '/dashboard/add-post' || '/dashboard/edit-post'){ %>
+    <script src="/js/ajax.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script>
+        new ClipboardJS('#copyButton');
+        // CKEDITOR.replace('body');
+    </script>
+<% }else { %>
+    <script src="/js/blog.js"></script>
+<% } %>
+
+</body>
+
+</html>

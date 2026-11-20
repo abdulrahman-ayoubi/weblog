@@ -1,0 +1,61 @@
+<% if(blog.length > 0){ %>
+    <div class="mt-5">
+        <%- include("../includes/blogMessage.ejs") %>
+    </div>
+    <div class="mt-5"><h2 class="mt-5">All post</h2></div>
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for(let blogs of blog){ %>
+                <tr>
+                    <td>1</td>
+                    <td class="w-25 overflow-hidden blog-title"><a
+                                href="/blogs/<%= blogs._id %>"></a> <%= blogs.title %></td>
+                    <td><%= formatDate(blogs.createdAt) %></td>
+                    <td>
+                        <span class=" status   <%= blogs.status === 'public' ? 'badge-success' : 'badge-warning' %>"><%= blogs.status %></span>
+                    </td>
+                    <td><a href="/dashboard/edit-post/<%= blogs._id %>" class="btn btn-sm btn-outline-primary">edit</a>
+                    </td>
+                    <td>
+                        <button
+                                class="show-delete delete-btn btn btn-sm btn-outline-danger">delete
+                        </button>
+                    </td>
+                    <div class="delete-container position-absolute">
+                        <div class="delete-box d-flex justify-content-between align-items-center ">
+                            <div class="delete-content ">
+                                <p>Are you sure to want to delete the post <span>!</span></p>
+                            </div>
+                            <div class="delete-btn">
+                                <div class="yes-btn mr-5">
+                                    <a href="/dashboard/delete-post/<%= blogs._id %>"
+                                       class=" btn btn-sm btn-outline-danger">delete</a>
+                                </div>
+                                <div class="no-btn mr-5">
+                                    <button class="cancel-btn btn btn-sm btn-outline-primary">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+        <%- include("../includes/pagination.ejs") %>
+
+    </div>
+<% }else{ %>
+    <div class="text-center align-items-center d-flex justify-content-center">
+        <h3 class="mt-5"> you don't have post</h3>
+    </div>
+<% } %>

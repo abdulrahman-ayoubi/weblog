@@ -1,0 +1,10 @@
+<div class="message-container">
+    <% if(typeof errors !== 'undefined' ) { %>
+        <% errors.forEach((error)=> { %>
+            <div class="message  alert">
+                <p><%= error.message %></p>
+                <span class="timer"></span>
+            </div>
+        <% }) %>
+    <% } %>
+</div>

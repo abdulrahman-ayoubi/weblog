@@ -1,0 +1,46 @@
+<div class="">
+    <%- include("./includes/message.ejs") %>
+</div>
+<div class="form-wrapper sign-up">
+    <form action="/users/register" method="POST">
+        <span>name/logo</span>
+        <h1>Sign <span>Up</span></h1>
+        <div class="input-group">
+            <input type="text" name="fullName" id="name">
+            <label for="name">Full name</label>
+        </div>
+        <div class="input-group">
+            <input type="Email" name="email" id="email">
+            <label for="email">email</label>
+        </div>
+        <div class="input-group">
+            <input type="password" class="password" name="password" id="password">
+            <label for="password">Password</label>
+        </div>
+        <div class="input-group">
+            <input type="password" class="password" name="confirmPassword" id="password2">
+            <label for="password2">Repeat password</label>
+
+        </div>
+        <div class="show-password">
+            <span class="show-span">Show password:</span>
+
+            <label>
+                <input type="checkbox" id="show-password">
+            </label>
+        </div>
+        <div class="mt-3">
+            <i class="fa fa-refresh" title="Change security code"></i>
+            <img src="/users/register/register-captcha.png" id="captchaImg" alt="captcha security code" class="captcha">
+            <label>
+                <input class="w-50" type="text" name="captcha">
+            </label>
+        </div>
+        <button type="submit" class="btn" id="signup-btn">Sign Up</button>
+        <div class="sign-link">
+            <p>Already have an account
+                <a href="/users/login" class="signin-link">Login</a>
+            </p>
+        </div>
+    </form>
+</div>

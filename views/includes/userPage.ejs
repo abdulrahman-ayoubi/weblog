@@ -1,0 +1,49 @@
+<section class="posts-container mt-5">
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Post Content Column -->
+            <div class="col">
+                <% if(posts.length > 0) { %>
+                    <div class="user-profile-img">
+                        <img src="http://localhost:3000/uploads/profile/<%= user.imagePath %>" alt="">
+                    </div>
+                    <h1 class="text-center pt-5 mb-5">Welcome to <%= fullName %> profile page </h1>
+
+
+                    <% for(let post of posts) { %>
+
+                        <div class="card mt-4 mb-4 animate__animated animate__fadeIn ">
+                            <div class="profile-img d-flex align-items-center ml-2 p-1">
+                                <div>
+                                    <img src="http://localhost:3000/uploads/profile/<%= user.imagePath %>" alt="">
+                                </div>
+                                <div>
+                                    <h3>
+                                        <%= fullName %>
+                                    </h3>
+                                    <p><%= formatDate(post.createdAt) %></p>
+                                </div>
+                            </div>
+
+                            <img class="card-img-top" src="http://localhost:3000/uploads/images/<%= post.imagePath %>"
+                                 alt="Card image cap"/>
+                            <div class="card-body">
+                                <h2 class="card-title">
+                                    <%= post.title %>
+                                </h2>
+                                <p class="card-text text-justify"><%- truncate(post.body, 400) %></p>
+                                <a href="/post/<%= post._id %>" class="btn btn-primary">more ...</a>
+                            </div>
+
+                        </div>
+                    <% } %>
+            </div>
+            <% } else { %>
+                <div class="m-5 text-center">
+                    <h1>this user don't have any post</h1>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+</section>

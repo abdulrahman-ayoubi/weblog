@@ -1,0 +1,59 @@
+<div class="w-50 mx-auto">
+    <%- include("../includes/message.ejs") %>
+</div>
+<div class="h-auto">
+    <h3 class="mt-5 text-center">Edit "<%= post.title %>" post</h3>
+</div>
+<div class="d-flex align-items-center justify-content-center flex-column mt-5">
+    <form action="/dashboard/edit-post/<%= post._id %>" class="w-50" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="title">Post title
+                <input type="text" class="title-input form-control w-50" maxlength="100"
+                       name="title" id="title"
+                       value="<%= post.title %>"/>
+            </label>
+            <div class="title input-remaining-container">
+                <p id="title-remaining"><%= (100 - post.title.length) %> characters remaining </p>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select name="status" class="form-control w-25" id="status">
+                <option value="<%= post.status %>" selected>
+                    <%= post.status === 'public' ? 'public' : 'private' %>
+                </option>
+                <option value="<%= post.status === 'public' ? 'private' : 'public' %>">
+                    <%= post.status === 'public' ? 'private' : 'public' %>
+                </option>
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <div class="custom-file image-container ">
+                <input type="file" name="image" class="custom-file-input" id="selectedImage"/>
+                <label id="imageStatus" class="custom-file-label overflow-hidden" for="selectedImage">
+                    select post picture...
+                </label>
+            </div>
+        </div>
+        <div class="file-information">
+            <p>Just support jpeg , png , and jpg picture or file size must be less than 4MB.</p>
+        </div>
+        <div class="form-group">
+            <h5>post text</h5>
+            <label for="body">
+                <textarea maxlength="2000" name="body" class="form-control" id="body" cols="50"
+                          rows="10">
+                    <%= post.body %>
+                </textarea>
+            </label>
+            <div class="title input-remaining-container">
+                <p id="textArea-remaining"><%= 2000 - post.body.length %> characters remaining </p>
+            </div>
+        </div>
+        <div class="row">
+            <input type="submit" value="confirm post edit " class="btn btn-success m-2"/>
+            <a href="/dashboard" class="btn btn-warning m-2">cancel</a>
+        </div>
+    </form>
+</div>

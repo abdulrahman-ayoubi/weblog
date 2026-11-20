@@ -1,0 +1,52 @@
+<%- include("../includes/message.ejs") %>
+<%- include("../includes/blogMessage.ejs") %>
+<form action="/dashboard/change-profile/<%= user %> " method="POST" enctype="multipart/form-data">
+    <div class="d-flex align-items-center justify-content-center flex-column mt-5">
+        <div class="img-container">
+            <img class="user-img" src="http://localhost:3000/uploads/profile/<%= userInfo.imagePath %>" alt="">
+        </div>
+        <div class="input-group mb-3 mt-2 w-25">
+            <!--      image input      -->
+            <div class="custom-file image-container ">
+                <input type="file" name="image" class="custom-file-input" id="selectedImage"/>
+
+                <label id="imageStatus" class="custom-file-label overflow-hidden" for="selectedImage">
+                    Change profile picture.
+                </label>
+            </div>
+        </div>
+        <div class="form-group w-50">
+            <label for="title">Change full name</label>
+            <input type="text" value="<%= fullName %>" class="title-input form-control" name="fullName"
+                   id="title"/>
+        </div>
+        <div class="form-group w-50">
+            <label for="changeEmail">Change email</label>
+            <input type="text" value="<%= userInfo.email %>" class="title-input form-control" name="email"
+                   id="changeEmail"/>
+        </div>
+        <div class="form-group w-50">
+            <label for="changePassword">New password</label>
+            <input type="password" class="password title-input form-control" name="password"
+                   id="changePassword"/>
+
+        </div>
+        <div class="form-group w-50">
+            <label for="changePasswordRepeat">Repeat new password</label>
+            <input type="password" class="password title-input form-control" name="confirmPassword"
+                   id="changePasswordRepeat"/>
+
+            <div class=" show-password-btn mt-2">
+                <label>Show password:
+                    <input type="checkbox" id="show-password">
+                </label>
+            </div>
+        </div>
+
+
+        <div>
+            <button type="submit" class="btn btn-success">submit</button>
+        </div>
+    </div>
+
+</form>

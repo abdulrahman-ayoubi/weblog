@@ -1,0 +1,39 @@
+<div class="form-wrapper sign-in">
+    <%- include("./includes/loginMessage.ejs") %>
+
+    <form action="/users/login" method="post">
+        <span>Weblog</span>
+        <h1>Log<span>in</span></h1>
+        <div class="input-group">
+            <input type="email" name="email" id="input">
+            <label for="input">Email</label>
+            <small class="emailSmall"></small>
+        </div>
+        <div class="input-group">
+            <div class="icon  icon2">
+                <i class="fa fa-eye"></i>
+                <i class="fa fa-eye-slash"></i>
+            </div>
+            <input type="password" class="password " id="password" name="password">
+            <label for="password">Password</label>
+            <small class="passwordSmall"></small>
+        </div>
+        <div class="remember-text" dir="rtl">
+            <div class="check">
+                <label for="remember">
+                    <input type="checkbox" checked name="remember" id="remember">
+                </label>
+                <span>Remember me</span>
+            </div>
+
+            <!--            <div class="g-recaptcha" data-sitekey="6LcgvuwoAAAAAETRp0cX7aZgA7v7shgtuTs5BldV"></div>-->
+        </div>
+
+        <button id="btn" type="submit">Login</button>
+
+        <div class="signIn-link">
+            <p>Don't have any account? <a href="/users/register" class="signUp-link">Sign up</a>
+            </p>
+        </div>
+    </form>
+</div>

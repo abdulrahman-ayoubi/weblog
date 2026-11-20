@@ -1,0 +1,57 @@
+<br>
+<div class="w-50 m-auto">
+    <%- include("./includes/blogMessage.ejs") %>
+</div>
+
+<div class="container mt-5">
+    <div class="bg-light">
+        <div class="w-25 text-center mx-auto">
+            <%- include("./includes/message.ejs") %>
+        </div>
+        <form class="mx-auto w-50" action="/contact" method="post">
+            <fieldset>
+                <legend class="text-center">Contact Us</legend>
+
+                <!-- Name input-->
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="name">Full name</label>
+                    <div class="col-md-9">
+                        <input id="name" name="fullName" type="text" placeholder="name and lastname..."
+                               class="form-control"/>
+                    </div>
+                </div>
+
+                <!-- Email input-->
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="email">email address</label>
+                    <div class="col-md-9">
+                        <input id="email" name="email" type="text" placeholder="your email..." class="form-control"/>
+                    </div>
+                </div>
+
+                <!-- Message body -->
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="message">message for us</label>
+                    <div class="col-md-9">
+                            <textarea class="form-control" id="message" name="message"
+                                      placeholder="please write your message in here for us. " rows="5"></textarea>
+                    </div>
+                </div>
+                <div class="w-25 text-center ">
+                    <i class="fa fa-refresh img_refresh" title="Change the security code"></i>
+                    <img src="/captcha.png" id="captcha_img" class="captcha mb-2" alt="captcha"/>
+                    <label class="w">
+                        <input type="text" class="form-control " name="captcha" placeholder="security code"/>
+                    </label>
+                </div>
+
+                <!-- Form actions -->
+                <div class="form-group mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        send message
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

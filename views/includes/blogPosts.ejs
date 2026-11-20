@@ -1,0 +1,26 @@
+<section class="posts-container mt-5">
+    <% if(posts.length > 0) { %>
+        <% for(let post of posts) { %>
+            <div class="card mt-4 mb-4 animate__animated animate__fadeIn ">
+                <div class="card-footer text-muted">
+                    posted at : <%= formatDate(post.createdAt) %>
+                </div>
+
+                <img class="card-img-top" src="http://localhost:3000/uploads/images/<%= post.imagePath %>"
+                     alt="Card image cap"/>
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <%= post.title %>
+                    </h2>
+                    <p class="card-text text-justify"><%- truncate(post.body, 300) %></p>
+                    <a href="/post/<%= post._id %>" class="btn btn-primary">more ...</a>
+                </div>
+
+            </div>
+        <% } %>
+    <% } else { %>
+        <div class="m-5 text-center">
+            <h1>Sorry we don't have post</h1>
+        </div>
+    <% } %>
+</section>

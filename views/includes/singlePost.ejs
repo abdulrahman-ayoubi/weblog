@@ -1,0 +1,113 @@
+<div class="m-auto position-relative single-message"><%- include("./blogMessage.ejs") %></div>
+<!-- Page Content -->
+<div class="container mt-5">
+    <div class="row">
+        <!-- Post Content Column -->
+        <div class="col">
+            <!-- Title -->
+            <h1 class="mt-4">
+                <%= post.title %>
+            </h1>
+            <div class="user-information">
+                <!-- Author -->
+                <div class="profile-img">
+                    <img src=" http://localhost:3000/uploads/profile/<%= post.user.imagePath %>" alt="">
+                </div>
+                <div>
+                    <p class="lead">
+                        Posted by:
+                        <a href="/user-profile/<%= url %> " title="see <%= post.user.fullName %> profile account">
+                            <%= post.user.fullName %>
+                        </a>
+                    </p>
+                    <!-- Date/Time -->
+                    <p>
+                        <%= formatDate(post.createAt) %>
+                    </p>
+                </div>
+            </div>
+
+
+            <hr/>
+
+            <!-- Preview Image -->
+            <div class="text-center">
+                <img class="img-fluid rounded " src="http://localhost:3000/uploads/images/<%= post.imagePath %>"
+                     alt=""/>
+            </div>
+
+            <hr/>
+
+            <!-- Post Content -->
+            <div>
+                <p class="text-justify w-50"><%- post.body %></p>
+            </div>
+
+            <hr/>
+
+            <!-- Comments Form -->
+            <div class="card my-4">
+                <h5 class="card-header">Write your comment:</h5>
+                <div class="card-body">
+                    <form action="/post/send-comment/<%= post.id %>" method="post">
+                        <div class="form-group">
+                            <label>
+                                <textarea class="form-control" name="comment" id="comment" rows="5"
+                                          cols="250"></textarea>
+                            </label>
+                        </div>
+                        <button type="submit" id="sendComment" class="btn btn-outline-primary">
+                            Send
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+            <!--    comment errors        -->
+            <% if(typeof errors !== 'undefined' ) { %>
+                <% errors.forEach((error)=> { %>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <%= error.message %>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <% }) %>
+            <% } %>
+            
+            <!--     show comment in page       -->
+            <div class="comment-container card my-4">
+                <div class="card-title">
+                    <% if(comment.length > 0){ %>
+                        <% for(let comments of comment){ %>
+
+                            <!--          profile image for comment              -->
+                            <div class="comment-img d-flex align-items-center">
+                                <img src="http://localhost:3000/uploads/profile/<%= comments.userId.imagePath %>"
+                                     alt="" class="pr-2">
+                                <div class="userInformation">
+                                    <p>
+                                        <%= formatDate(comments.sendAt) %>
+                                    </p>
+                                    <p>
+                                        <%= comments.userId.fullName %>
+                                        <% if(post.user.id.toString() == comments.userId.id ){ %>
+                                            <span class="alert alert-success p-1"> Post author
+                                                                </span>
+                                        <% } %>
+                                    </p>
+
+                                </div>
+                            </div>
+
+                            <p class="text-justify w-100 comment-body"><%- comments.comment %></p>
+
+                        <% } %>
+                    <% }else { %>
+                        <p>This post don't have any comment!</p>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

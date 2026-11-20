@@ -1,0 +1,50 @@
+<div class="w-50 mx-auto">
+    <%- include("../includes/message.ejs") %>
+</div>
+<h3 class="mt-2 text-center">Create new post</h3>
+<div class="d-flex align-items-center justify-content-center flex-column mt-5">
+    <form action="/dashboard/add-post" class="w-50" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="title">Post title</label>
+            <input type="text" class="title-input form-control w-50" name="title" id="title" maxlength="100" autofocus
+                   placeholder="Enter post title."/>
+            <div class="title input-remaining-container">
+                <p id="title-remaining">100 characters remaining </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select name="status" class="form-control w-25" id="status">
+                <option value="public" selected>public</option>
+                <option value="private">private</option>
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <div class="custom-file image-container ">
+                <input type="file" name="image" class="custom-file-input" id="selectedImage"/>
+
+                <label id="imageStatus" class="custom-file-label overflow-hidden" for="selectedImage">
+                    select post picture...
+                </label>
+            </div>
+        </div>
+        <div class="file-information">
+            <p class="">Just support jpeg , png , and jpg picture or file size must be less than 4MB.</p>
+        </div>
+        <div class="form-group">
+            <h5>post text</h5>
+            <label for="body">
+                <textarea name="body" maxlength="2000" class="form-control" id="body" cols="50" rows="10"
+                          placeholder="Enter information about post."></textarea>
+            </label>
+            <div class="title input-remaining-container">
+                <p id="textArea-remaining">2000 characters remaining </p>
+            </div>
+        </div>
+        <div class="row">
+            <input type="submit" value="Add post" id="imageUpload" class="btn btn-outline-success m-2"
+            />
+            <a href="/dashboard" class="btn btn-outline-warning m-2">cancel</a>
+        </div>
+    </form>
+</div>
