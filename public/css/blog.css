@@ -1,0 +1,9 @@
+.status {
+    padding: 3px;
+    border-radius: 5px;
+
+}
+
+.badge-warning {
+    font-size: 0.8rem;
+}

@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+z
+
+.svg {
+    animation: shake 3s infinite;
+
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+
+    }
+    50% {
+        transform: translateX(20px);
+    }
+    100% {
+        transform: translateX(0);
+
+    }
+}
+
+.btn a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.rtl {
+    text-align: center;
+
+}
+
+.btn {
+    border: 1px solid;
+    border-radius: 15px;
+    padding: 7px 20px;
+    transition: 0.4s;
+}
+
+.btn:hover {
+    border: 1px solid rgba(12, 225, 12, 0.83);
+    padding: 7px 24px;
+    color: rgba(12, 225, 12, 0.83);
+}

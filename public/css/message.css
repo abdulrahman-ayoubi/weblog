@@ -1,0 +1,83 @@
+.message-container {
+    position: absolute;
+    left: -22rem;
+    top: 4.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: come 10s ease;
+}
+
+@keyframes come {
+    0% {
+        left: -22rem;
+        opacity: 0;
+
+
+    }
+    10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 99% {
+        left: 2rem;
+        opacity: 1;
+    }
+    100% {
+        left: 2rem;
+        opacity: 0;
+    }
+}
+
+.timer {
+    position: absolute;
+    bottom: 2px;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(to left, rgba(17, 53, 255, 0.58), rgba(255, 29, 206, 0.58));
+    animation: timer 10.5s;
+}
+
+@keyframes timer {
+    0% {
+        width: 100%;
+    }
+    100% {
+        width: 0;
+    }
+}
+
+.message {
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid rgba(236, 109, 109, 0.7) !important;
+    border-radius: 7px;
+    background-color: rgba(234, 200, 200, 0.5);
+    margin: 5px;
+    width: 330px;
+}
+
+.message p {
+    text-align: center;
+    color: #e85260;
+
+}
+
+.message-close {
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    outline: none;
+    border: none;
+    width: 0;
+    height: 0;
+    color: rgba(25, 25, 25, 0.93);
+    font-size: 1.5rem;
+    padding: 0;
+
+}
+
+/*login message*/
+.success-message {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    align-items: center;
+}
